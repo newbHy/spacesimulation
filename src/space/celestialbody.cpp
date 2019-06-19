@@ -3,7 +3,7 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////
-CelestialBody::CelestialBody() : m_orbit(this)
+CelestialBody::CelestialBody() : m_parent(nullptr), m_orbit(this)
 {
     m_mass   = 0.0;
     m_radius = 0.0;

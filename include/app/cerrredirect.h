@@ -5,6 +5,9 @@
 
 
 
+// Automatically redirects the std::cerr output stream to
+// a file stream and reverses this as soon as this object
+// is destroyed.
 class CerrRedirect
 {
     public:

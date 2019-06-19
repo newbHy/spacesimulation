@@ -28,7 +28,7 @@ SimulationState& SimulationState::getInstance()
 ///////////////////////////////////////////////////////////////////////////////
 void SimulationState::onStart()
 {
-    m_space.initSolarSystem();
+    m_space.createSolarSystem();
 }
 
 

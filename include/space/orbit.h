@@ -21,6 +21,8 @@ class Orbit
         void setOrbitalElements(sfSpace::PRECISE a, sfSpace::PRECISE e, sfSpace::PRECISE M,
                                 sfSpace::PRECISE N, sfSpace::PRECISE i, sfSpace::PRECISE w);
 
+        Vector getGlobalPosition() const;
+
     protected:
         void calculatePeriod();
         void setMeanAnomaly();
