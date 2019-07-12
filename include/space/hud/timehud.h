@@ -2,8 +2,7 @@
 #define TIMEHUD_H
 
 #include <SFML/Graphics/Text.hpp>
-
-#include "misc/typedefs.h"
+#include "typedefs.h"
 
 
 
