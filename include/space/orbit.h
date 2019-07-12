@@ -1,8 +1,8 @@
 #ifndef ORBIT_H
 #define ORBIT_H
 
-#include "misc/typedefs.h"
-#include "misc/vector.h"
+#include "typedefs.h"
+#include "vector.h"
 
 
 
@@ -20,6 +20,8 @@ class Orbit
         void update(float time);
         void setOrbitalElements(sfSpace::PRECISE a, sfSpace::PRECISE e, sfSpace::PRECISE M,
                                 sfSpace::PRECISE N, sfSpace::PRECISE i, sfSpace::PRECISE w);
+
+        Vector getGlobalPosition() const;
 
     protected:
         void calculatePeriod();

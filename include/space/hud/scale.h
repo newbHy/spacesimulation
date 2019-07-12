@@ -2,8 +2,7 @@
 #define SCALE_H
 
 #include <SFML/Graphics/Text.hpp>
-
-#include "misc/typedefs.h"
+#include "typedefs.h"
 
 
 
@@ -16,6 +15,7 @@ class Scale
         void draw(sf::RenderWindow* renderwindow);
 
         sfSpace::PRECISE getScaleFactor() const;
+        sfSpace::PRECISE getInvScaleFactor() const;
 
         void setScaleFactor(sfSpace::PRECISE factor);
         void updateScaleText();
@@ -23,6 +23,7 @@ class Scale
     private:
 
         sfSpace::PRECISE    m_scalefactor;
+        sfSpace::PRECISE    m_scalefactorinv;
 
         sf::Text            m_scaletext;
 

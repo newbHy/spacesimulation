@@ -1,9 +1,9 @@
 #include <SFML/Graphics.hpp>
 
-#include "assets/resourcemanager.h"
+#include "resourcemanager.h"
 #include "scale.h"
-#include "si/metrics.h"
-#include "misc/stringoperations.h"
+#include "metrics.h"
+#include "stringoperations.h"
 
 
 
@@ -55,6 +55,13 @@ sfSpace::PRECISE Scale::getScaleFactor() const
 
 
 ///////////////////////////////////////////////////////////////////////////////
+sfSpace::PRECISE Scale::getInvScaleFactor() const
+{
+    return m_scalefactorinv;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
 void Scale::setScaleFactor(sfSpace::PRECISE factor)
 {
     m_scalefactor = factor;
@@ -63,6 +70,8 @@ void Scale::setScaleFactor(sfSpace::PRECISE factor)
         m_scalefactor = 1;
     if (m_scalefactor > sfSpace::SI::AU * 0.5)
         m_scalefactor = sfSpace::SI::AU * 0.5;
+
+    m_scalefactorinv = 1.0 / m_scalefactor;
 }
 
 

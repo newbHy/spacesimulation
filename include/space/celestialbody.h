@@ -4,7 +4,7 @@
 #include <SFML/System/String.hpp>
 #include <SFML/Graphics/Color.hpp>
 
-#include "misc/typedefs.h"
+#include "typedefs.h"
 #include "orbit.h"
 
 

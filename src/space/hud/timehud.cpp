@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 
-#include "assets/resourcemanager.h"
-#include "misc/stringoperations.h"
-#include "space/timefunctions.h"
+#include "resourcemanager.h"
+#include "stringoperations.h"
+#include "timefunctions.h"
 #include "timehud.h"
 
 

@@ -1,9 +1,9 @@
 #include <math.h>
 
 #include "celestialbody.h"
-#include "misc/conversations.h"
+#include "conversations.h"
 #include "orbit.h"
-#include "si/metrics.h"
+#include "metrics.h"
 
 
 
@@ -27,7 +27,6 @@ void Orbit::update(float time)
 {
     if (m_orbitType == Orbit::OrbitType::fixed)
     {
-
         m_M += 360.0 * (time * m_period_inv);
         if (m_M >= 360.0)
             m_M -= 360.0;
@@ -50,7 +49,7 @@ void Orbit::setMeanAnomaly()
 void Orbit::calculatePeriod()
 {
     if (m_orbitType == Orbit::OrbitType::fixed &&
-            m_owner != nullptr)
+        m_owner != nullptr && m_owner->getParent() != nullptr)
     {
         m_period = 2 * sfSpace::Pi * sqrt( pow(m_a, 3) / (m_owner->getParent()->getMass() * sfSpace::G) );
         m_period_inv = 1.0 / m_period;
@@ -76,7 +75,6 @@ void Orbit::setOrbitalElements(sfSpace::PRECISE a, sfSpace::PRECISE e, sfSpace::
             m_b = m_a;
     }
 
-    update(1.0f);
     calculatePeriod();
 }
 
@@ -125,9 +123,16 @@ void Orbit::calculatePosition()
     yv = m_b * sin(m_E);
 
     m_v = atan2(yv, xv);
-    m_r = sqrt( xv*xv + yv*yv );
+    m_r = sqrt(xv*xv + yv*yv);
 
-    m_position.x = m_r * ( cos(m_N) * cos(m_v+m_w) - sin(m_N) * sin(m_v+m_w) * cos(m_i) );
-    m_position.y = m_r * ( sin(m_N) * cos(m_v+m_w) + sin(m_N) * sin(m_v+m_w) * cos(m_i) );
-    m_position.z = m_r * ( sin(m_v+m_w) * sin(m_i) );
+    m_position.x = m_r * (cos(m_N) * cos(m_v+m_w) - sin(m_N) * sin(m_v+m_w) * cos(m_i));
+    m_position.y = m_r * (sin(m_N) * cos(m_v+m_w) + sin(m_N) * sin(m_v+m_w) * cos(m_i));
+    m_position.z = m_r * (sin(m_v+m_w) * sin(m_i));
+}
+
+
+///////////////////////////////////////////////////////////////////////////////
+Vector Orbit::getGlobalPosition() const
+{
+    return m_position;
 }
