@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "states/statemanager.h"
+#include "statemanager.h"
 #include "cerrredirect.h"
 
 
