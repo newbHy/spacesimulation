@@ -2,8 +2,9 @@
     #include <iostream>
 #endif // DEBUG
 
-#include "app/app.h"
-#include "space/simulationstate.h"
+#include <math.h>
+#include "app.h"
+#include "simulationstate.h"
 
 
 
