@@ -4,8 +4,8 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include <SFML/Window/Event.hpp>
 
-#include "space/space.h"
-#include "states/state.h"
+#include "space.h"
+#include "state.h"
 
 
 
