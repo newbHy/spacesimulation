@@ -1,5 +1,5 @@
-#include "app/app.h"
-#include "misc/typedefs.h"
+#include "app.h"
+#include "typedefs.h"
 
 
 
