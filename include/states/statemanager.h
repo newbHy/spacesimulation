@@ -1,7 +1,7 @@
 #ifndef STATEMANAGER_H
 #define STATEMANAGER_H
 
-#include "states/state.h"
+#include "state.h"
 
 
 
