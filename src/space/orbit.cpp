@@ -1,7 +1,7 @@
 #include <math.h>
 
 #include "celestialbody.h"
-#include "conversations.h"
+#include "conversions.h"
 #include "orbit.h"
 #include "metrics.h"
 
