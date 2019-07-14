@@ -1,5 +1,5 @@
-#ifndef CONVERSATIONS_H_INCLUDED
-#define CONVERSATIONS_H_INCLUDED
+#ifndef CONVERSIONS_H_INCLUDED
+#define CONVERSIONS_H_INCLUDED
 
 #include "metrics.h"
 
@@ -11,4 +11,4 @@ namespace sfSpace
     const sfSpace::PRECISE degtoRad = sfSpace::Pi / 180.0;
 }
 
-#endif // CONVERSATIONS_H_INCLUDED
+#endif // CONVERSIONS_H_INCLUDED
