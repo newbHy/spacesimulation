@@ -9,7 +9,7 @@ int main()
     sfSpace::testSizes();
 #endif // DEBUG
 
-    App app(800,600,"Space Simulator");
+    App app(800 ,600 ,"Space Simulator");
 
     app.run();
 

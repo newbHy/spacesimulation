@@ -1,34 +1,44 @@
+#include "app/app.h"
+
 #ifdef DEBUG
     #include <iostream>
+    #include <math.h>
 #endif // DEBUG
 
-#include "app/app.h"
 #include "space/simulationstate.h"
 
 
 
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 App::App(unsigned int width, unsigned int height, sf::String title)
+  : m_renderwindow(sf::VideoMode(width, height), title),
+    m_running(true),
+    m_statemanager(),
+    m_timer(),
+    m_frameaccumulator(0.f),
+    m_framenow(0.f),
+    m_frametime(0.f),
+    m_frametimelogic(0.f),
+    cerrredirect()
 {
-    m_renderwindow.create(sf::VideoMode(width, height), title);
-
-    setFrameLimit(60, 60);
+    setFrameLimit(30, 15);
 
     m_statemanager.changeState(&SimulationState::getInstance());
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 App::~App()
 {
-    //dtor
 #ifdef DEBUG
-    std::cerr << "[Shutdown] Time : " << floor(m_timer.getElapsedTime().asSeconds()) << " seconds" << std::endl;
-#endif // DEBUG
+    std::cerr << "[Shutdown] Time : "
+              << std::floor(m_timer.getElapsedTime().asSeconds())
+              << " seconds" << std::endl;
+#endif
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 bool App::run()
 {
     if (!m_renderwindow.isOpen())
@@ -81,20 +91,14 @@ bool App::run()
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
-void App::doFrame()
-{
-}
-
-
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 void App::close()
 {
     m_running = false;
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 void App::setFrameLimit(unsigned int frames, unsigned int logicframes)
 {
     m_frametime      = static_cast<float>(1.f / frames);

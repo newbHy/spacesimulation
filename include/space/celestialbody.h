@@ -5,7 +5,7 @@
 #include <SFML/Graphics/Color.hpp>
 
 #include "misc/typedefs.h"
-#include "orbit.h"
+#include "space/orbit.h"
 
 
 
@@ -13,7 +13,8 @@ class CelestialBody
 {
     public:
         CelestialBody();
-        CelestialBody(sfSpace::PRECISE mass, sfSpace::PRECISE radius, sf::String name, sf::Color color);
+        CelestialBody(sfSpace::PRECISE mass, sfSpace::PRECISE radius,
+                      sf::String name, sf::Color color);
 
         virtual ~CelestialBody();
 
@@ -43,11 +44,11 @@ class CelestialBody
         sfSpace::PRECISE    m_mass;         // mass in kg
         sfSpace::PRECISE    m_radius;       // radius in m
 
-        CelestialBody*      m_parent;
-        Orbit               m_orbit;
+        CelestialBody*      m_parent;       // parent body/focal point
+        Orbit               m_orbit;        // orbit object
 
-        sf::String          m_name;
-        sf::Color           m_color;
+        sf::String          m_name;         // the name
+        sf::Color           m_color;        // the apparent color
 };
 
 #endif // CELESTIALBODY_H

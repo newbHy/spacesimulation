@@ -25,14 +25,13 @@ class ResourceManager
 
         static ResourceManager* getInstance();
 
-    protected:
-
     private:
         ResourceManager();
 
         void unload();
 
         FontMap m_fontmap;
+
 };
 
 #endif // RESOURCEMANAGER_H

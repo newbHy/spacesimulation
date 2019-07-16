@@ -15,6 +15,13 @@ namespace sfSpace
         const sfSpace::PRECISE AU   = M * 149597870700;
         const sfSpace::PRECISE pc   = M * 3.0857e16;
         const sfSpace::PRECISE ly   = M * 9.4607e15;
+
+        const sfSpace::PRECISE s    = 1.;
+        const sfSpace::PRECISE m    = s * 60;
+        const sfSpace::PRECISE h    = m * 60;
+        const sfSpace::PRECISE d    = h * 24;
+        const sfSpace::PRECISE y    = d * 365;
+        const sfSpace::PRECISE cy   = y * 100;
     }
 
     const PRECISE Pi = 3.14159265358979323846;

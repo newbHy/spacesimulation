@@ -7,28 +7,35 @@
 
 
 
+namespace sf
+{
+    class RenderWindow;
+}
+
 class Scale
 {
     public:
         Scale();
-        virtual ~Scale();
+        ~Scale();
 
         void draw(sf::RenderWindow* renderwindow);
 
         sfSpace::PRECISE getScaleFactor() const;
+
         sfSpace::PRECISE getInvScaleFactor() const;
 
         void setScaleFactor(sfSpace::PRECISE factor);
+
+        // Updates the text to display the correct scale factor
         void updateScaleText();
 
     private:
+        sfSpace::PRECISE  m_scalefactor;
+        sfSpace::PRECISE  m_scalefactorinv;
 
-        sfSpace::PRECISE    m_scalefactor;
-        sfSpace::PRECISE    m_scalefactorinv;
+        sf::Text          m_scaletext;
 
-        sf::Text            m_scaletext;
-
-        unsigned int        m_scalewidth;
+        int               m_scalewidth;
 };
 
 #endif // SCALE_H

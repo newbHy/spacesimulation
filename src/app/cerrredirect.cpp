@@ -1,17 +1,18 @@
+#include "app/cerrredirect.h"
+
 #include <iostream>
 
-#include "cerrredirect.h"
 
 
-
-///////////////////////////////////////////////////////////////////////////////
-CerrRedirect::CerrRedirect() : cerrbuf(nullptr)
+////////////////////////////////////////////////////////////////////////////////
+CerrRedirect::CerrRedirect()
+  : m_cerrbuf(nullptr),
+    m_out("messages.txt", std::ofstream::out | std::ofstream::app)
 {
-    out.open("messages.txt", std::ofstream::out | std::ofstream::app);
-    if (out.is_open())
+    if (m_out.is_open())
     {
-        cerrbuf = std::cerr.rdbuf(); //save old buf
-        std::cerr.rdbuf(out.rdbuf()); //redirect std::cerr to out.txt!
+        m_cerrbuf = std::cerr.rdbuf(); //save old buf
+        std::cerr.rdbuf(m_out.rdbuf()); //redirect std::cerr to out.txt!
     }
     else
     {
@@ -20,9 +21,12 @@ CerrRedirect::CerrRedirect() : cerrbuf(nullptr)
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 CerrRedirect::~CerrRedirect()
 {
-    if (cerrbuf)
-        std::cerr.rdbuf(cerrbuf); //reset to standard output again
+    if (m_cerrbuf)
+        std::cerr.rdbuf(m_cerrbuf); //reset to standard output again
+
+    if (m_out.is_open())
+        m_out.close();
 }

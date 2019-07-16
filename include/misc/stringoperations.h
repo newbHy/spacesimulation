@@ -6,7 +6,8 @@
 #include <SFML/Graphics/Text.hpp>
 
 
-
+////////////////////////////////////////////////////////////////////////////////
+// note: https://stackoverflow.com/questions/16605967/set-precision-of-stdto-string-when-converting-floating-point-values
 template <typename T>
 std::string to_string_with_precision(const T a_value, const int n = 6)
 {
@@ -16,6 +17,8 @@ std::string to_string_with_precision(const T a_value, const int n = 6)
     return out.str();
 }
 
+
+////////////////////////////////////////////////////////////////////////////////
 inline void setOriginTopLeft(sf::Text& text)
 {
     text.setOrigin( text.getLocalBounds().left, text.getLocalBounds().top);

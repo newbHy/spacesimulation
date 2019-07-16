@@ -1,8 +1,8 @@
+#include "misc/typedefs.h"
+
 #ifdef DEBUG
 
 #include <stdio.h>
-
-#include "misc/typedefs.h"
 
 
 

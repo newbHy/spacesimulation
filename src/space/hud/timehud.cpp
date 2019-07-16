@@ -1,14 +1,18 @@
+#include "space/hud/timehud.h"
+
 #include <SFML/Graphics.hpp>
 
 #include "assets/resourcemanager.h"
 #include "misc/stringoperations.h"
 #include "space/timefunctions.h"
-#include "timehud.h"
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-TimeHud::TimeHud() : m_timemodifier(1.0)
+////////////////////////////////////////////////////////////////////////////////
+TimeHud::TimeHud()
+  : m_timemodifier(1.0),
+    m_timestamp(0),
+    m_timestampreminder(0.f)
 {
     m_timetext.setFillColor(sf::Color::White);
     m_timetext.setCharacterSize(16);
@@ -18,30 +22,46 @@ TimeHud::TimeHud() : m_timemodifier(1.0)
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 TimeHud::~TimeHud()
 {
-    //dtor
+    // ...
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 void TimeHud::draw(sf::RenderWindow* renderwindow)
 {
-    m_timetext.setString(getTimeStr());
+    m_timetext.setString(sfSpace::Time::getTimeStr(m_timestamp));
 
     setOriginTopLeft(m_timetext);
 
-    m_timetext.setPosition(renderwindow->getSize().x - m_timetext.getLocalBounds().width,
-                           renderwindow->getSize().y - m_timetext.getLocalBounds().height);
+    m_timetext.setPosition(
+               renderwindow->getSize().x - m_timetext.getLocalBounds().width,
+               renderwindow->getSize().y - m_timetext.getLocalBounds().height);
 
 
     renderwindow->draw(m_timetext);
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
-const sfSpace::PRECISE TimeHud::getTimeModifier() const
+////////////////////////////////////////////////////////////////////////////////
+void TimeHud::advanceTime(float time)
 {
-    return m_timemodifier;
+    m_timestampreminder += time;
+
+    if (m_timestampreminder >= 1.f)
+    {
+        unsigned int seconds = m_timestampreminder;
+        m_timestamp += seconds;
+        m_timestampreminder -= seconds;
+    }
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+void TimeHud::setupTimeNow()
+{
+    m_timestamp = sfSpace::Time::now();
+    m_timestampreminder = 0.f;
 }

@@ -7,22 +7,31 @@
 
 
 
-class TimeHud
+namespace sf
+{
+    class RenderWindow;
+}
+
+class TimeHud final
 {
     public:
         TimeHud();
-        virtual ~TimeHud();
+        ~TimeHud();
 
         void draw(sf::RenderWindow* renderwindow);
 
-        const sfSpace::PRECISE getTimeModifier() const;
+        void advanceTime(float time);
 
-    protected:
+        void setupTimeNow();
 
     private:
-
         sfSpace::PRECISE    m_timemodifier;
+
         sf::Text            m_timetext;
+
+        std::time_t         m_timestamp;
+
+        float               m_timestampreminder;
 };
 
 #endif // TIMEHUD_H

@@ -1,7 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
-#include "typedefs.h"
+#include "misc/typedefs.h"
 
 
 
@@ -23,6 +23,8 @@ class Vector2D
         Vector2D(const Vector& copyvector);
         virtual ~Vector2D();
 
+        sfSpace::PRECISE length();
+
         Vector2D& operator+=(const Vector2D& rhs);
         Vector2D& operator-=(const Vector2D& rhs);
         Vector2D& operator*=(const sfSpace::PRECISE& rhs);
@@ -30,5 +32,10 @@ class Vector2D
         sfSpace::PRECISE x, y;
 };
 
+Vector2D operator-(const Vector2D &lhs, const Vector2D &rhs);
+Vector2D operator+(const Vector2D &lhs, const Vector2D &rhs);
+
+Vector operator+(const Vector &lhs, const Vector &rhs);
+Vector operator-(const Vector &lhs, const Vector &rhs);
 
 #endif // VECTOR_H

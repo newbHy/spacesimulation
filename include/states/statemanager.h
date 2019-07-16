@@ -11,6 +11,9 @@ public:
     StateManager();
     virtual ~StateManager();
 
+    StateManager(const StateManager& rhs) = delete;
+    StateManager& operator=(const StateManager& rhs) = delete;
+
     void changeState(State* state);
 
     void onDraw(sf::RenderWindow* renderwindow);
@@ -19,10 +22,7 @@ public:
 
     void onEvent(sf::Event& event);
 
-protected:
-
 private:
-
     State* m_currentState;
 };
 
