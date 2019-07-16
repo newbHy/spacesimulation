@@ -53,6 +53,8 @@ bool App::run()
 
     while(m_running)
     {
+        // Accumulator from:
+        // http://gafferongames.com/game-physics/fix-your-timestep/
         float newtime   = m_timer.getElapsedTime().asSeconds();
         float frametime = newtime - m_framenow;
         m_framenow      = newtime;
